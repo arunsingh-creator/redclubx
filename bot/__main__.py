@@ -43,32 +43,35 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+    stats = f'<b>⏰Bot Uptime:</b> {currentTime}\n'\
+            f'<b>☬OS Uptime:</b> {osUptime}\n\n'\
+            f'<b>📁Total Disk Space:</b> {total}\n'\
+            f'<b>☠Used:</b> {used} | <b>✨Free:</b> {free}\n\n'\
+            f'<b>📤Upload:</b> {sent}\n'\
+            f'<b>📥Download:</b> {recv}\n\n'\
+            f'<b>🖥️CPU:</b> {cpuUsage}%\n'\
+            f'<b>📦RAM:</b> {mem_p}%\n'\
+            f'<b>📀DISK:</b> {disk}%\n\n'\
+            f'<b>➤Physical Cores:</b> {p_core}\n'\
+            f'<b>☞Total Cores:</b> {t_core}\n\n'\
+            f'<b>✨SWAP:</b> {swap_t} | <b>🤗Used:</b> {swap_p}%\n'\
+            f'<b>💿Memory Total:</b> {mem_t}\n'\
+            f'<b>📀Memory Free:</b> {mem_a}\n'\
+            f'<b>💿Memory Used:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Updates Channel", "https://t.me/heliosmirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("🤴 𝐎𝐰𝐧𝐞𝐫 🤴", "https://t.me/Red_ClubX")
+    buttons.buildbutton("✨ 𝐑𝐞𝐩𝐨𝐫𝐭 ✨", "https://t.me/+V44_cXaSYzZmNzI1")
+    buttons.buildbutton("☠ 𝐌𝐢𝐫𝐫𝐨𝐫 𝐆𝐫𝐨𝐮𝐩 ☠", "https://t.me/+V44_cXaSYzZmNzI1")
     uname = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a>'
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''Hey! {uname},\n
-This bot can mirror all your links to Google Drive! and also can Upload them on Telegram if you want.
+🙋 𝐇𝐞𝐲 𝐃𝐮𝐝𝐞! 𝐈 𝐀𝐌 𝐌𝐈𝐑𝐑𝐎𝐑 𝐁𝐎𝐓!
+𝐈 𝐂𝐚𝐧 𝐌𝐢𝐫𝐫𝐨𝐫 𝐀𝐥𝐥 𝐘𝐨𝐮 𝐓𝐡𝐢𝐧𝐠𝐬 𝐓𝐨 𝐆𝐃𝐫𝐢𝐯𝐞(♻️ 𝐓𝐞𝐚𝐦 𝐃𝐫𝐢𝐯𝐞)😉.
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
